@@ -8,6 +8,24 @@ import {
 } from "react-icons/fa";
 
 function Footer() {
+  // 🌟 Correct Exact IDs for all sections
+  const quickLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Programs", href: "#programs" },
+    { name: "Why Choose Us", href: "#why-us" },
+    { name: "Registration", href: "#registration" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  // 🌟 Force smooth scroll to top when "Home" is clicked
+  const handleLinkClick = (e, name) => {
+    if (name === "Home") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-[#020817] via-[#07142A] to-[#0B1F3A] text-white">
 
@@ -92,22 +110,16 @@ function Footer() {
             </h3>
 
             <div className="flex flex-col gap-5">
-              {[
-                "Home",
-                "About",
-                "Programs",
-                "Why Choose Us",
-                "Registration",
-                "Contact",
-              ].map((item) => (
+              {quickLinks.map((link) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.name)}
                   className="group flex items-center gap-3 text-blue-100/70 hover:text-yellow-400 transition-all duration-300"
                 >
                   <span className="w-0 h-[2px] bg-yellow-400 rounded-full transition-all duration-300 group-hover:w-8"></span>
                   <span className="group-hover:translate-x-2 transition-transform duration-300">
-                    {item}
+                    {link.name}
                   </span>
                 </a>
               ))}
@@ -123,7 +135,7 @@ function Footer() {
           >
             <h3 className="text-2xl font-black text-white mb-8 flex items-center gap-3">
               <span className="w-10 h-1 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 shadow-[0_0_10px_rgba(250,204,21,0.5)]"></span>
-              Contact
+              Contact Info
             </h3>
 
             <div className="space-y-6">
@@ -137,7 +149,7 @@ function Footer() {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-blue-200/70">
-                    Phone
+                    Phone / WhatsApp
                   </p>
                   <p className="text-white font-bold tracking-wide mt-0.5">
                     +91 86809 38947

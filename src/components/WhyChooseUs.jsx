@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaUserTie,
   FaBullseye,
@@ -11,7 +11,26 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
+// 🌟 Import your local images from assets folder
+import img0 from "../assets/image.png";
+import img1 from "../assets/image1.png";
+import img2 from "../assets/image2.png";
+import img3 from "../assets/image3.png";
+import img4 from "../assets/image4.png";
+
 function WhyChooseUs() {
+  // 🌟 State for background slider
+  const [currentBg, setCurrentBg] = useState(0);
+  const bgImages = [img0, img1, img2, img3, img4];
+
+  // 🌟 Auto-slide logic
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % bgImages.length);
+    }, 3500); // Changes image every 3.5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   const features = [
     {
       icon: <FaUserTie />,
@@ -185,37 +204,55 @@ function WhyChooseUs() {
           </div>
         </motion.div>
 
-        {/* ================= CALL TO ACTION ================= */}
+        {/* ================= CALL TO ACTION (3D Auto-Sliding & Contained Image) ================= */}
         <motion.div
           initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden mt-24 rounded-[40px]"
+          className="relative overflow-hidden mt-24 rounded-[40px] bg-[#020817]"
         >
-          {/* Background */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1800&auto=format&fit=crop')",
-            }}
-          />
+          {/* 🌟 Auto-Sliding Background Images */}
+          <div className="absolute inset-0">
+            <AnimatePresence>
+              {/* Blurred background layer to fill empty black spaces gracefully */}
+              <motion.div
+                key={currentBg + "blur"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.3 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+                className="absolute inset-0 bg-cover bg-center blur-lg"
+                style={{ backgroundImage: `url(${bgImages[currentBg]})` }}
+              />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07142A]/95 via-[#0B2D5B]/90 to-[#b2791d]/80"></div>
+              {/* Main contained image to show full photo without cropping */}
+              <motion.div
+                key={currentBg}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-80"
+                style={{ backgroundImage: `url(${bgImages[currentBg]})` }}
+              />
+            </AnimatePresence>
+          </div>
+
+          {/* Premium Overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07142A]/95 via-[#0B2D5B]/85 to-[#b2791d]/60 z-0"></div>
 
           {/* Glow */}
-          <div className="absolute -left-24 top-0 w-80 h-80 rounded-full bg-blue-500/20 blur-[140px]"></div>
-          <div className="absolute -right-24 bottom-0 w-80 h-80 rounded-full bg-yellow-400/20 blur-[140px]"></div>
+          <div className="absolute z-0 -left-24 top-0 w-80 h-80 rounded-full bg-blue-500/20 blur-[140px]"></div>
+          <div className="absolute z-0 -right-24 bottom-0 w-80 h-80 rounded-full bg-yellow-400/20 blur-[140px]"></div>
 
           {/* Content */}
           <div className="relative z-10 px-8 py-20 text-center">
-            <span className="inline-block px-5 py-2 rounded-full bg-yellow-400/20 border border-yellow-400/30 text-yellow-300 font-bold uppercase tracking-[0.2em] text-xs">
+            <span className="inline-block px-5 py-2 rounded-full bg-yellow-400/20 border border-yellow-400/30 text-yellow-300 font-bold uppercase tracking-[0.2em] text-xs shadow-lg">
               Join Astros Today
             </span>
 
-            <h2 className="mt-6 text-4xl md:text-5xl font-black text-white leading-tight">
+            <h2 className="mt-6 text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-lg">
               Ready To Become
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500">
@@ -223,16 +260,20 @@ function WhyChooseUs() {
               </span>
             </h2>
 
-            <p className="max-w-2xl mx-auto mt-6 text-blue-100/80 text-lg leading-8">
+            <p className="max-w-2xl mx-auto mt-6 text-white/90 text-lg leading-8 drop-shadow-md font-medium">
               Learn from experienced coaches with structured training,
               modern facilities, performance tracking and professional
               match preparation.
             </p>
 
-            <button className="mt-10 inline-flex items-center gap-3 bg-gradient-to-b from-yellow-400 to-yellow-500 border border-yellow-200 border-b-[5px] border-b-yellow-700 active:border-b-0 active:translate-y-[5px] px-10 py-4 rounded-2xl font-black text-slate-900 hover:scale-105 hover:shadow-[0_20px_45px_rgba(250,204,21,0.45)] transition-all duration-300">
+            {/* Link to Registration Form */}
+            <a
+              href="#registration"
+              className="mt-10 inline-flex items-center gap-3 bg-gradient-to-b from-[#facc15] to-[#eab308] border border-t-white/50 border-b-[5px] border-b-[#a16207] active:border-b-0 active:translate-y-[5px] px-10 py-4 rounded-xl font-black text-slate-900 shadow-[0_15px_30px_rgba(0,0,0,0.3)] hover:scale-105 hover:shadow-[0_20px_45px_rgba(250,204,21,0.45)] transition-all duration-300 cursor-pointer"
+            >
               Register Now
               <FaArrowRight />
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

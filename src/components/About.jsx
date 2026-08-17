@@ -9,6 +9,10 @@ import {
   FaArrowRight
 } from "react-icons/fa";
 
+// 🌟 Import local images from assets folder
+import image from "../assets/image.png";
+import image1 from "../assets/image1.png";
+
 function About() {
   return (
     <section
@@ -74,8 +78,9 @@ function About() {
             <div className="relative rounded-[32px] overflow-hidden border border-t-white/30 border-l-white/20 border-r-white/10 border-b-white/10 bg-white/5 backdrop-blur-sm shadow-[0_25px_50px_rgba(0,0,0,0.5)] transform hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(250,204,21,0.15)] transition-all duration-500 group p-2">
               
               <div className="relative rounded-[24px] overflow-hidden">
+                {/* 🌟 Main Coach Image */}
                 <img
-                  src="https://images.pexels.com/photos/8639846/pexels-photo-8639846.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src={image}
                   alt="Coach Alexandar"
                   className="w-full h-[600px] object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
                 />
@@ -152,7 +157,7 @@ function About() {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
@@ -234,7 +239,8 @@ function About() {
 
               <div className="mt-8 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-yellow-400/50 shadow-lg">
-                  <img src="https://images.pexels.com/photos/8639846/pexels-photo-8639846.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Avatar" className="w-full h-full object-cover object-top" />
+                  {/* 🌟 Avatar Image */}
+                  <img src={image1} alt="Avatar" className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
                   <h4 className="text-yellow-400 font-bold text-lg drop-shadow-sm">
@@ -261,10 +267,14 @@ function About() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <button className="inline-flex items-center gap-3 bg-gradient-to-b from-[#facc15] to-[#eab308] border border-t-white/50 border-b-[5px] border-b-[#a16207] active:border-b-0 active:translate-y-[5px] text-slate-950 font-extrabold text-sm md:text-base px-10 py-4 rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.3)] transform hover:-translate-y-2 hover:scale-105 hover:shadow-[0_20px_40px_rgba(250,204,21,0.4)] transition-all duration-300">
+          {/* 🌟 Changed from <button> to <a> tag and linked to #registration */}
+          <a
+            href="#registration"
+            className="inline-flex items-center gap-3 bg-gradient-to-b from-[#facc15] to-[#eab308] border border-t-white/50 border-b-[5px] border-b-[#a16207] active:border-b-0 active:translate-y-[5px] text-slate-950 font-extrabold text-sm md:text-base px-10 py-4 rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.3)] transform hover:-translate-y-2 hover:scale-105 hover:shadow-[0_20px_40px_rgba(250,204,21,0.4)] transition-all duration-300 cursor-pointer"
+          >
             <span>Book a Free Trial Session</span>
             <FaArrowRight className="text-sm" />
-          </button>
+          </a>
         </motion.div>
 
       </div>

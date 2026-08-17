@@ -13,46 +13,52 @@ import {
 function Programs() {
   const programsList = [
     {
-      icon: <FaUserGraduate />,
+      icon: <FaCalendarAlt />,
       color: "from-blue-500 to-blue-700",
       bg: "bg-blue-500/10",
-      title: "One-to-One Coaching",
-      desc: "Personalized coaching sessions with complete focus on individual skill development.",
-    },
-    {
-      icon: <FaDumbbell />,
-      color: "from-green-500 to-emerald-600",
-      bg: "bg-green-500/10",
-      title: "Strength & Conditioning",
-      desc: "Professional fitness training to improve speed, agility and endurance.",
-    },
-    {
-      icon: <FaBullseye />,
-      color: "from-yellow-400 to-orange-500",
-      bg: "bg-yellow-500/10",
-      title: "Spin Development",
-      desc: "Master advanced spin bowling techniques with match strategies.",
-    },
-    {
-      icon: <FaBaseballBall />,
-      color: "from-cyan-500 to-blue-600",
-      bg: "bg-cyan-500/10",
-      title: "Batting Development",
-      desc: "Improve batting technique, power hitting, shot selection and match awareness.",
+      title: "Weekday Coaching",
+      desc: "Mon, Wed & Fri (12 Sessions/month). Batch 1: 6.15AM - 8.15AM | Batch 2: 4.00PM - 6.00PM.",
+      price: "₹5000 / Month",
     },
     {
       icon: <FaCalendarAlt />,
-      color: "from-purple-500 to-pink-600",
-      bg: "bg-purple-500/10",
-      title: "One Week Camp",
-      desc: "7-day intensive cricket development program with complete performance tracking.",
+      color: "from-green-500 to-emerald-600",
+      bg: "bg-green-500/10",
+      title: "Weekend Coaching",
+      desc: "Saturday & Sunday (8 Sessions/month). Batch 3: 6.15AM - 8.15AM | Batch 4: 4.00PM - 6.00PM.",
+      price: "₹3500 / Month",
     },
     {
-      icon: <FaBolt />,
+      icon: <FaUserGraduate />,
+      color: "from-yellow-400 to-orange-500",
+      bg: "bg-yellow-500/10",
+      title: "1-on-1 High Performance",
+      desc: "Personalized coaching sessions with complete focus on individual batting/bowling skill development.",
+      price: "Contact Us",
+    },
+    {
+      icon: <FaBullseye />,
+      color: "from-cyan-500 to-blue-600",
+      bg: "bg-cyan-500/10",
+      title: "Elite Spin Workshop",
+      desc: "Master advanced spin bowling techniques and variations in an intensive 3-day workshop.",
+      price: "Limited Slots",
+    },
+    {
+      icon: <FaDumbbell />,
+      color: "from-purple-500 to-pink-600",
+      bg: "bg-purple-500/10",
+      title: "Strength & Conditioning",
+      desc: "Professional cricket-specific fitness training to improve your speed, agility and endurance.",
+      price: "Included",
+    },
+    {
+      icon: <FaBaseballBall />,
       color: "from-orange-500 to-red-500",
       bg: "bg-orange-500/10",
-      title: "3-Day Special Camp",
-      desc: "Short-term performance camp for immediate improvement and confidence building.",
+      title: "Boys & Girls Batches",
+      desc: "No age limits! Dedicated training sessions utilizing professional bowling machines.",
+      price: "Open For All",
     },
   ];
 
@@ -114,12 +120,12 @@ function Programs() {
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-[32px] border border-t-white/30 border-l-white/20 border-r-white/5 border-b-[3px] border-b-white/10 bg-white/5 backdrop-blur-md hover:border-yellow-400/50 hover:bg-white/10 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(250,204,21,0.15)] transition-all duration-500"
+              className="group relative overflow-hidden rounded-[32px] border border-t-white/30 border-l-white/20 border-r-white/5 border-b-[3px] border-b-white/10 bg-white/5 backdrop-blur-md hover:border-yellow-400/50 hover:bg-white/10 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(250,204,21,0.15)] transition-all duration-500 flex flex-col"
             >
               {/* Top Gradient Bar */}
               <div className={`h-2 w-full bg-gradient-to-r ${program.color} shadow-lg`}></div>
 
-              <div className="p-8">
+              <div className="p-8 flex flex-col flex-grow">
                 {/* Icon Container */}
                 <div
                   className={`w-16 h-16 rounded-2xl ${program.bg} border border-white/10 flex items-center justify-center text-3xl text-white mb-7 group-hover:rotate-6 group-hover:scale-110 shadow-inner transition-transform duration-500`}
@@ -131,14 +137,19 @@ function Programs() {
                   {program.title}
                 </h3>
 
-                <p className="text-blue-100/70 leading-relaxed mb-8 text-sm sm:text-base">
+                <p className="text-blue-100/70 leading-relaxed mb-6 text-sm sm:text-base flex-grow">
                   {program.desc}
                 </p>
 
-                {/* 🌟 3D Enroll Button linked to #registration */}
+                {/* Added Price Tag */}
+                <div className="text-yellow-400 font-black text-xl mb-6 bg-black/30 w-max px-4 py-2 rounded-lg border border-white/5">
+                  {program.price}
+                </div>
+
+                {/* 3D Enroll Button linked to #registration */}
                 <a 
                   href="#registration"
-                  className="inline-flex items-center gap-2 text-yellow-400 font-bold group-hover:gap-4 transition-all duration-300 active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 text-yellow-400 font-bold group-hover:gap-4 transition-all duration-300 active:scale-95 cursor-pointer mt-auto"
                 >
                   Enroll Now
                   <FaArrowRight />
@@ -171,25 +182,24 @@ function Programs() {
           {/* Premium Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#020817]/95 via-[#0B1F3A]/90 to-[#b2791d]/80" />
 
-          <div className="relative z-10 py-20 px-8 text-center flex flex-col items-center">
+          <div className="relative z-10 py-16 px-8 text-center flex flex-col items-center">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white drop-shadow-lg">
-              Ready To Transform
+              First 10 Admissions
               <span className="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-400 sm:ml-3 drop-shadow-[0_5px_5px_rgba(250,204,21,0.2)]">
-                Your Cricket Journey?
+                Get Flat ₹500/- Off!
               </span>
             </h2>
 
-            <p className="mt-6 max-w-2xl mx-auto text-blue-100/90 text-base sm:text-lg leading-relaxed drop-shadow-md">
-              Join ASTROS Cricket Centre today and start learning from experienced
-              coaches with structured training programs.
+            <p className="mt-6 max-w-2xl mx-auto text-blue-100/90 text-base sm:text-lg leading-relaxed drop-shadow-md font-medium">
+              Join ASTROS Cricket Centre today. Registrations are open for both Weekday & Weekend batches at C Kandaswami Naidu College, Anna Nagar.
             </p>
 
-            {/* 🌟 3D Premium Register Button linked to #registration */}
+            {/* 3D Premium Register Button linked to #registration */}
             <a 
               href="#registration"
               className="mt-10 inline-flex items-center gap-3 bg-gradient-to-b from-[#facc15] to-[#eab308] border border-t-white/50 border-b-[5px] border-b-[#a16207] active:border-b-0 active:translate-y-[5px] text-slate-950 font-extrabold text-sm md:text-base px-10 py-4 rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.3)] transform hover:-translate-y-2 hover:scale-105 hover:shadow-[0_20px_40px_rgba(250,204,21,0.4)] transition-all duration-300 cursor-pointer"
             >
-              <span>Register Now</span>
+              <span>Claim Your Discount Now</span>
               <FaArrowRight className="text-sm" />
             </a>
           </div>

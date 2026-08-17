@@ -211,12 +211,14 @@ function Contact() {
               </div>
               <div>
                 <h3 className="text-2xl font-black text-white drop-shadow-md">Our Location</h3>
-                <p className="text-blue-100/70 text-sm">Visit our academy in Bengaluru</p>
+                {/* 🌟 Updated to Anna Nagar */}
+                <p className="text-blue-100/70 text-sm">Visit our academy in Anna Nagar, Chennai</p>
               </div>
             </div>
             
+            {/* 🌟 Updated Directions Link */}
             <a
-              href="https://goo.gl/maps/YOUR_MAP_LINK_HERE"
+              href="https://www.google.com/maps/search/C+Kandaswami+Naidu+College,+Anna+Nagar,+Chennai"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-b from-[#facc15] to-[#eab308] border border-t-white/50 border-b-[4px] border-b-[#a16207] active:border-b-0 active:translate-y-[4px] text-slate-950 font-extrabold px-8 py-3.5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] transform hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_30px_rgba(250,204,21,0.4)] transition-all duration-300"
@@ -227,16 +229,17 @@ function Contact() {
           </div>
 
           <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+            {/* 🌟 Updated Embedded Map for C Kandaswami Naidu College */}
             <iframe
               title="Academy Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124415.82860888276!2d77.53073791008709!3d12.954517008640541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1716301321000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=C%20Kandaswami%20Naidu%20College,%20Anna%20Nagar,%20Chennai&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="grayscale-[30%] contrast-125 hover:grayscale-0 transition-all duration-700"
+              className="grayscale-[20%] contrast-125 hover:grayscale-0 transition-all duration-700"
             ></iframe>
           </div>
         </motion.div>
